@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app_front
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app_front
+  template:
+    metadata:
+      labels:
+        app: app_front
+    spec:
+      containers:
+      - name: app_front
+        image: asheroxa/as_front
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - name: front
+          containerPort: 8080
